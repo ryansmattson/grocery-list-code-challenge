@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="groceryApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Grocery List Code Challenge</title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/stylesheet.css">
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="scripts/ListController.js"></script>
+</head>
+
+<body class="container" ng-controller="ListController as list">
+    <header>
+        <h1>Grocery List Code Challenge</h1></header>
+
+    <span>Item:</span>
+    <input type="text" ng-model="list.newItem" />
+    <span>Amount:</span>
+    <input type="number" ng-model="list.newAmount" />
+    <button class="btn btn-md btn-primary" ng-click="list.addNewItem(list.newItem, list.newAmount)">Add</button>
+
+    <h2>Grocery List</h2>
+    <div class="list-view">
+        <ul ng-repeat="item in list.fullList">
+            <li>Item Name: {{item.name}}</li>
+            <li>Item Quantity: {{item.qty}}</li>
+            <input type="text" ng-model="updateName" placeholder="Update name" />
+            <input type="number" ng-model="updateAmount" placeholder="Update Amount" />
+            <button class="btn btn-sm btn-warning" ng-click="list.updateItem(item._id, updateName, updateAmount)">Update</button>
+            <button class="btn btn-sm btn-danger" ng-click="list.removeItem(item._id)">Remove</button>
+        </ul>
+    </div>
+
+</body>
+
+</html>
